@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>컴퓨터 부품 추천</title>
+</head>
+<body>
+<h1>컴퓨터 부품 추천 시스템</h1>
+<form id="partsForm">
+    <label for="budget">예산 범위 선택:</label>
+    <select id="budget" name="budget" required>
+        <option value="1000000">1000000원 ~ 1500000원</option>
+        <option value="1500001">1500000원 이상</option>
+    </select>
+    <br>
+    <label for="usage">용도:</label>
+    <select id="usage" name="usage" required>
+        <option value="gaming">게이밍</option>
+        <option value="work">작업용</option>
+        <option value="general">일반 사용</option>
+    </select>
+    <br>
+    <label for="cpuBrand">CPU 브랜드:</label>
+    <select id="cpuBrand" name="cpuBrand" required>
+        <option value="AMD">AMD</option>
+        <option value="Intel">Intel</option>
+    </select>
+    <br>
+    <label for="preferredManufacturer">선호하는 제조사:</label>
+    <select id="preferredManufacturer" name="preferredManufacturer" required>
+        <option value="ASUS">ASUS</option>
+        <option value="MSI">MSI</option>
+        <option value="General">일반</option>
+    </select>
+    <br>
+    <button type="submit">추천 받기</button>
+</form>
+<div id="recommendationResult"></div>
+
+<script>
+function recommendParts(budget, usage, preferredManufacturer, cpuBrand) {
+    let recommendedParts = "추천 부품 목록:<br>";
+    let cpu, gpu, ram, motherboard, ssd, caseChoice, powerSupply, cooler;
+
+    // 예산을 정수로 변환
+    budget = parseInt(budget, 10); 
+
+    // CPU 선택
+    if (cpuBrand === "AMD") {
+        cpu = budget >= 1500001 ? "AMD Ryzen 5 5600X (340,000원)" : "AMD Ryzen 3 3300X (160,000원)";
+    } else if (cpuBrand === "Intel") {
+        cpu = budget >= 1500001 ? "Intel Core i7-10700K (380,000원)" : "Intel Core i5-10400F (180,000원)";
+    } else {
+        return "선택한 CPU 브랜드가 유효하지 않습니다.<br>";
+    }
+
+    // GPU 선택
+    gpu = usage === "gaming" && budget >= 1500001 ? "NVIDIA RTX 3070 (800,000원)" : "NVIDIA GTX 1650 Super (200,000원)";
+
+    // RAM 선택
+    ram = budget >= 1500001 ? "16GB DDR4-3200 (120,000원)" : "8GB DDR4-2400 (40,000원)";
+    
+    // 마더보드 선택
+    if (preferredManufacturer === "ASUS") {
+        motherboard = "ASUS PRIME B550-PLUS (160,000원)";
+    } else if (preferredManufacturer === "MSI") {
+        motherboard = "MSI B550M PRO-VDH WIFI (140,000원)";
+    } else {
+        motherboard = "GIGABYTE B550M DS3H (120,000원)";
+    }
+
+    // 기타 부품 선택
+    ssd = "Samsung 970 EVO Plus 1TB (200,000원)";
+    caseChoice = "NZXT H510 (80,000원)";
+    powerSupply = "Corsair RM750 (120,000원)";
+    cooler = "Cooler Master Hyper 212 (60,000원)";
+
+    // 부품 목록 추가
+    recommendedParts += `CPU: ${cpu}<br>`;
+    recommendedParts += `GPU: ${gpu}<br>`;
+    recommendedParts += `RAM: ${ram}<br>`;
+    recommendedParts += `Motherboard: ${motherboard}<br>`;
+    recommendedParts += `SSD: ${ssd}<br>`;
+    recommendedParts += `Cooler: ${cooler}<br>`;
+    recommendedParts += `Case: ${caseChoice}<br>`;
+    recommendedParts += `Power Supply: ${powerSupply}<br>`;
+
+    // 총 가격 계산
+    let totalPrice = [cpu, gpu, ram, motherboard, ssd, caseChoice, powerSupply, cooler].reduce((acc, part) => {
+        // 부품 가격에서 숫자만 추출하여 더함
+        let price = parseInt(part.match(/(\d+[,]?)+원/)[0].replace(/원|,/g, ''), 10);
+        return acc + price;
+    }, 0);
+
+    // 쿨러 가격이 '기본 쿨러 사용'일 경우 0원으로 계산
+    if (cooler !== "기본 쿨러 사용") {
+        totalPrice += parseInt(cooler.match(/(\d+[,]?)+원/)[0].replace(/원|,/g, ''), 10);
+    }
+
+    recommendedParts += "총 예산: " + totalPrice.toLocaleString() + "원<br>";
+
+    return recommendedParts;
+}
+
+document.getElementById('partsForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // 폼 제출 기본 동작 방지
+
+    // 입력 값 가져오기
+    const budget = document.getElementById('budget').value;
+    const usage = document.getElementById('usage').value;
+    const cpuBrand = document.getElementById('cpuBrand').value;
+    const preferredManufacturer = document.getElementById('preferredManufacturer').value;
+
+    // 부품 추천 함수 실행
+    const recommendedParts = recommendParts(budget, usage, preferredManufacturer, cpuBrand);
+
+    // 결과 출력
+    document.getElementById('recommendationResult').innerHTML = recommendedParts; // 수정된 부분
+});
+</script>
+</body>
+</html>
