@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>존망 PC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+    </style>
+
+</head>
+
+<body class="bg-gray-50">
+
+
+    <div class="container mx-auto p-4">
+      <header class="bg-white shadow">
+          <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="flex justify-between h-16">
+                  <div class="flex">
+                      <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                          <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                      </div>
+                  </div>
+                  <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                      <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">커뮤니티</a>
+                      <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">A/S 센터</a>
+                  </div>
+                  <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                      <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Sign up</a>
+                      <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Login</a>
+                  </div>
+              </div>
+          </nav>
+      </header>
+      <main>
+          <div id="mid_img" class="max-w-full mx-auto py-6 sm:px-6 lg:px-8">
+              <!-- Replace with your content -->
+              <div>
+                <img src="./computer.jpg" width=1440px;>
+                  </div>
+              <!-- /End replace -->
+          </div>
+      </main>
+
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="bg-white shadow rounded-lg p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Configuration Panel -->
+            <div class="space-y-4">
+                <div>
+                    <label for="budget" class="block text-sm font-medium text-gray-700">예산</label>
+                    <input type="range" id="budget" name="budget" min="0" max="5000000" step="500000"
+                        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                        oninput="updateBudget(this.value)">
+                    <p id="budgetValue" class="text-center text-gray-700 mt-2"></p>
+                </div>
+                <div>
+                    <label for="purpose" class="block text-sm font-medium text-gray-700">용도</label>
+                    <select id="purpose" name="purpose"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option>게임</option>
+                        <option>작업</option>
+                        <option>일반 사용</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="cpu" class="block text-sm font-medium text-gray-700">CPU</label>
+                    <select id="cpu" name="cpu"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option>Intel</option>
+                        <option>AMD</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="gpu" class="block text-sm font-medium text-gray-700">GPU</label>
+                    <select id="gpu" name="gpu"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option>NVIDIA</option>
+                        <option>AMD</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="ram" class="block text-sm font-medium text-gray-700">RAM</label>
+                    <select id="ram" name="ram"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option>8GB</option>
+                        <option>16GB</option>
+                        <option>32GB</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="storage" class="block text-sm font-medium text-gray-700">SSD/HDD</label>
+                    <select id="storage" name="storage"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option>256GB SSD</option>
+                        <option>512GB SSD</option>
+                        <option>1TB HDD</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="cooler" class="block text-sm font-medium text-gray-700">쿨러</label>
+                    <select id="cooler" name="cooler"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option>기본 쿨러</option>
+                        <option>고급 쿨러</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="power" class="block text-sm font-medium text-gray-700">파워</label>
+                    <select id="power" name="power"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option>500W</option>
+                        <option>650W</option>
+                        <option>750W</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="case" class="block text-sm font-medium text-gray-700">케이스</label>
+                    <select id="case" name="case"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option>미니타워</option>
+                        <option>미들타워</option>
+                        <option>풀타워</option>
+                    </select>
+                </div>
+                <button
+                    class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">추천</button>
+            </div>
+
+            <!-- Recommendation Display -->
+            <div class="md:col-span-2">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Recommendation 1 -->
+                    <div class="bg-gray-50 p-4 rounded-lg shadow">
+                        <h3 class="text-md font-semibold mb-2">추천 견적 1</h3>
+                        <ul class="text-sm">
+                            <li>CPU: <span class="font-medium">Intel Core i7</span></li>
+                            <li>GPU: <span class="font-medium">NVIDIA RTX 3070</span></li>
+                            <li>RAM: <span class="font-medium">16GB DDR4</span></li>
+                            <li>SSD: <span class="font-medium">512GB NVMe</span></li>
+                            <li>HDD: <span class="font-medium">1TB</span></li>
+                            <li>쿨러: <span class="font-medium">고급 쿨러</span></li>
+                            <li>파워: <span class="font-medium">650W</span></li>
+                            <li>케이스: <span class="font-medium">미들타워</span></li>
+                        </ul>
+                    </div>
+                    <!-- Recommendation 2 -->
+                    <div class="bg-gray-50 p-4 rounded-lg shadow">
+                        <h3 class="text-md font-semibold mb-2">추천 견적 2</h3>
+                        <ul class="text-sm">
+                            <li>CPU: <span class="font-medium">AMD Ryzen 7</span></li>
+                            <li>GPU: <span class="font-medium">AMD RX 6800 XT</span></li>
+                            <li>RAM: <span class="font-medium">32GB DDR4</span></li>
+                            <li>SSD: <span class="font-medium">1TB NVMe</span></li>
+                            <li>HDD: <span class="font-medium">2TB</span></li>
+                            <li>쿨러: <span class="font-medium">기본 쿨러</span></li>
+                            <li>파워: <span class="font-medium">750W</span></li>
+                            <li>케이스: <span class="font-medium">풀타워</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for interactive elements
+        function updateBudget(value) {
+            const budgetValue = document.getElementById('budgetValue');
+            budgetValue.textContent = `${Number(value).toLocaleString()}원`;
+        }
+    </script>
+</body>
+
+</html>
