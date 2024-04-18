@@ -18,5 +18,5 @@ This project is a community site where AI recommends computer quotes and allows 
 ## Developer
 ### <a href="https://github.com/NLessW">Kim-WooHyeok</a> - Implementing features using JavaScript
 ### <a href="https://github.com/Baeseongryeong">Bae-SeongRyeong</a> - Site html, css design
-### <a href="">Jang-JinWoo</a> - Building a Database
+### <a href="https://github.com/jangjangjin">Jang-JinWoo</a> - Building a Database
 
